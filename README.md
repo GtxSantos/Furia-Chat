@@ -23,7 +23,7 @@ furia-fans-chat/
 │ ├── script.js
 │ └── furia-logo.png
 │
-├── server.js (se aplicável)
+├── server.js 
 ├── README.md
 └── .gitignore
 
