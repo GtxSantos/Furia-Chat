@@ -10,7 +10,7 @@ O **Furia Chat** é uma aplicação simples de chat para troca de mensagens em t
 
 - Interface amigável com HTML, CSS e JavaScript.
 - Suporte a troca de mensagens em tempo real.
-- Backend leve com Node.js (ou descrever como está funcionando, caso esteja estático).
+- Backend leve com Node.js.
 - Estrutura de projeto pronta para evolução com WebSocket, autenticação, etc.
 
 ## 📁 Estrutura do Projeto
