@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Chat da comunidade FURIA para acompanhar e torcer pelos jogos de CS">
+    <title>FURIA Chat ⚡ | Acompanhe e torça com a comunidade</title>
+    
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="furia-logo.png" as="image">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700;900&display=swap" as="style">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Tema escuro/claro -->
+    <script>
+        // Verifica preferência do usuário ou tema salvo
+        const savedTheme = localStorage.getItem('theme') || 
+                          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', savedTheme);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <img src="furia-logo.png" alt="FURIA Logo" class="logo" width="120" height="120">
+            <h1>FURIA Chat ⚡</h1>
+            <p>Torça, participe e sinta a energia da melhor comunidade de CS do Brasil!</p>
+            
+            <!-- Botão de tema -->
+            <button id="theme-toggle" aria-label="Alternar tema escuro/claro">
+                <i class="fas fa-moon"></i>
+                <i class="fas fa-sun"></i>
+            </button>
+        </header>
+
+        <main>
+            <section class="status-section">
+                <div class="status-bar" aria-live="polite">
+                    <span><i class="status-indicator" aria-hidden="true"></i> <span id="online-count">0</span> torcedores online</span>
+                    <span id="current-match">Próximo jogo: FURIA vs NAVI - 19:00</span>
+                </div>
+
+                <div id="scoreboard" class="scoreboard" aria-live="polite">
+                    <h3>PLACAR ATUAL</h3>
+                    <div class="team-score">
+                        <div>
+                            <img src="furia-logo.png" alt="FURIA" class="team-logo" width="40" height="40">
+                            <span>FURIA</span>
+                        </div>
+                        <div id="score">0 - 0</div>
+                        <div>
+                            <span>ADVERSÁRIO</span>
+                            <img src="opponent-logo.png" alt="Adversário" class="team-logo" width="40" height="40">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="chat-section">
+                <ul id="messages" aria-label="Mensagens do chat" role="log"></ul>
+                
+                <form id="form" action="">
+                    <input 
+                        id="input" 
+                        autocomplete="off" 
+                        placeholder="Digite sua mensagem ou comando..." 
+                        aria-label="Digite sua mensagem"
+                    />
+                    <button id="send-button" type="submit" aria-label="Enviar mensagem">
+                        <svg class="claw-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                            <path d="M20 10 Q40 40 30 70" stroke="#00c2ff" stroke-width="10" stroke-linecap="round"/>
+                            <path d="M50 5 Q70 40 55 75" stroke="#00c2ff" stroke-width="10" stroke-linecap="round"/>
+                            <path d="M80 10 Q95 50 70 80" stroke="#00c2ff" stroke-width="10" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </form>
+            </section>
+
+            <nav class="options-panel">
+                <button class="option-button" data-option="1" aria-label="Acompanhar Jogo">🎯 Acompanhar Jogo</button>
+                <button class="option-button" data-option="2" aria-label="Participar da Torcida">🎉 Participar da Torcida</button>
+                <button class="option-button" data-option="3" aria-label="Bastidores">📸 Bastidores</button>
+                <button class="option-button" data-option="4" aria-label="Quiz FURIA">🧠 Quiz FURIA</button>
+            </nav>
+        </main>
+
+        <footer>
+            <p>⚡ Powered by FURIA Fans ⚡</p>
+            <div>
+                <a href="https://twitter.com/furia" target="_blank" rel="noopener" aria-label="Twitter da FURIA">
+                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.instagram.com/furiagg/" target="_blank" rel="noopener" aria-label="Instagram da FURIA">
+                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                </a>
+                <a href="https://www.twitch.tv/furiatv" target="_blank" rel="noopener" aria-label="Twitch da FURIA">
+                    <i class="fab fa-twitch" aria-hidden="true"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+
+    <div id="energy-burst" class="energy-burst" style="display: none;" aria-hidden="true"></div>
+
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="script.js" defer></script>
+</body>
+</html>
